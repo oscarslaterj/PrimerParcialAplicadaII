@@ -12,81 +12,45 @@ namespace BLL
 {
     public class DepositosRepositorio : RepositorioBase<Deposito>
     {
-/*
-        public override bool Eliminar(int id)
-        {
-            bool paso = false;
-
-            try
-            {
-                Deposito depositos = Contexto.Deposito.Find(id);
-                Contexto.Cuentas.Find(depositos.CuentaID).Balance -= depositos.Monto;
-                Contexto.Deposito.Remove(depositos);
-                Contexto.SaveChanges();
-                paso = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            return paso;
-        }
-
         public override bool Guardar(Deposito entity)
         {
             bool paso = false;
-
             try
             {
-                Contexto.Deposito.Add(entity);
-                Contexto.Cuentas.Find(entity.CuentaID).Balance += entity.Monto;
-               Contexto.SaveChanges();
-                paso = true;
-
+                if (_contexto.Set<Deposito>().Add(entity) != null)
+                {
+                    _contexto.Cuenta.Find(entity.CuentaID).Balance += entity.Monto;
+                    _contexto.SaveChanges();
+                    paso = true;
+                }
             }
             catch (Exception)
             {
                 throw;
             }
-
-
             return paso;
         }
 
-        public override bool Modificar(Deposito entity)
+        public override bool Eliminar(int id)
         {
             bool paso = false;
-
             try
             {
-                Contexto.Entry(entity).State = EntityState.Modified;
+                Deposito entity = _contexto.Set<Deposito>().Find(id);
+                _contexto.Cuenta.Find(entity.CuentaID).Balance -= entity.Monto;
+                _contexto.Set<Deposito>().Remove(entity);
 
-                Deposito DepAnt = Contexto.Deposito.Find(entity.DepositoID);
-                Cuenta cuenta = Contexto.Cuentas.Find(entity.CuentaID);
-                var cuentaAnt = Contexto.Cuentas.Find(DepAnt.CuentaID);
+                if (_contexto.SaveChanges() > 0)
+                    paso = true;
 
-                if (entity.CuentaID != DepAnt.CuentaID)
-                {
-                    cuenta.Balance += entity.Monto;
-                    cuentaAnt.Balance -= DepAnt.Monto;
-                }
-                {
-                    decimal diferencia = entity.Monto - DepAnt.Monto;
-                    cuenta.Balance += diferencia;
-                }
-
-                Contexto.SaveChanges();
-                paso = true;
-
+                _contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-
-
             return paso;
-        }*/
+        }
+
     }
 }
