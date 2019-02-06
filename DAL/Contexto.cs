@@ -10,6 +10,8 @@ namespace DAL
 {
     public class Contexto : DbContext
     {
+        public static object Cuentas;
+
         public DbSet<Cuenta> Cuenta { get; set; }
         public DbSet<Deposito> Deposito { get; set; }
 

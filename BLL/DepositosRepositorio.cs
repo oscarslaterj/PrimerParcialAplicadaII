@@ -2,6 +2,7 @@
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 namespace BLL
 {
     public class DepositosRepositorio : RepositorioBase<Deposito>
-    {/*
+    {
+/*
         public override bool Eliminar(int id)
         {
             bool paso = false;
@@ -18,8 +20,8 @@ namespace BLL
             try
             {
                 Deposito depositos = Contexto.Deposito.Find(id);
-                Contexto.Cuenta.Find(depositos.CuentaId).Balance -= depositos.Monto;
-                Contexto.Depositos.Remove(depositos);
+                Contexto.Cuentas.Find(depositos.CuentaID).Balance -= depositos.Monto;
+                Contexto.Deposito.Remove(depositos);
                 Contexto.SaveChanges();
                 paso = true;
             }
@@ -37,9 +39,9 @@ namespace BLL
 
             try
             {
-                Contexto Deposito.Add(entity);
-                Contexto.Cuenta.Find(entity.CuentaId).Balance += entity.Monto;
-                Contexto.SaveChanges();
+                Contexto.Deposito.Add(entity);
+                Contexto.Cuentas.Find(entity.CuentaID).Balance += entity.Monto;
+               Contexto.SaveChanges();
                 paso = true;
 
             }
@@ -52,7 +54,7 @@ namespace BLL
             return paso;
         }
 
-        public override bool Modificar(Depositos entity)
+        public override bool Modificar(Deposito entity)
         {
             bool paso = false;
 
@@ -60,11 +62,11 @@ namespace BLL
             {
                 Contexto.Entry(entity).State = EntityState.Modified;
 
-                Deposito DepAnt = Contexto.Deposito.Find(entity.DepositoId);
-                var cuenta = Contexto.Cuenta.Find(entity.CuentaId);
-                var cuentaAnt = Contexto.Cuenta.Find(DepAnt.CuentaId);
+                Deposito DepAnt = Contexto.Deposito.Find(entity.DepositoID);
+                Cuenta cuenta = Contexto.Cuentas.Find(entity.CuentaID);
+                var cuentaAnt = Contexto.Cuentas.Find(DepAnt.CuentaID);
 
-                if (entity.CuentaId != DepAnt.CuentaId)
+                if (entity.CuentaID != DepAnt.CuentaID)
                 {
                     cuenta.Balance += entity.Monto;
                     cuentaAnt.Balance -= DepAnt.Monto;
@@ -74,7 +76,7 @@ namespace BLL
                     cuenta.Balance += diferencia;
                 }
 
-                contexto.SaveChanges();
+                Contexto.SaveChanges();
                 paso = true;
 
             }

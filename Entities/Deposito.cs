@@ -24,6 +24,16 @@ namespace Entities
             Monto = 0;
             Fecha = DateTime.Now;
         }
+
+        public Deposito(int depositoId, DateTime fecha, int cuentaId, string concepto, decimal monto)
+        {
+            DepositoID = depositoId;
+            Fecha = fecha;
+            CuentaID = cuentaId;
+            Concepto = concepto;
+            Monto = monto;
+        }
+
     }
 }
 
