@@ -33,8 +33,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Registros
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="Registros/rCuentas.aspx">Cuentas</a>
-                        <a class="dropdown-item" href="Registros/rDepositos.aspx"></>Depositos</a>
+                        <a class="dropdown-item" runat="server" href="~/Registros/rCuentas.aspx">Cuentas</a>
+                        <a class="dropdown-item" runat="server" href="~/Registros/rDepositos.aspx"></>Depositos</a>
                     </div>
                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop1" data-toggle="dropdown">Consultas
                     </a>

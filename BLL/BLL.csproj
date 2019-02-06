@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepositosRepositorio.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioBase.cs" />
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{5fdf86b2-e216-45c4-9fe5-0ab595a29de9}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{68E216CF-FE4C-47EE-A25A-1006A122FF70}</Project>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

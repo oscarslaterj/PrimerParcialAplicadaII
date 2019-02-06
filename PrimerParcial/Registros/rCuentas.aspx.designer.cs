@@ -76,13 +76,13 @@ namespace PrimerParcial.Registros {
         protected global::System.Web.UI.WebControls.Button NuevoButton;
         
         /// <summary>
-        /// GuadarButton control.
+        /// GuardarButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button GuadarButton;
+        protected global::System.Web.UI.WebControls.Button GuardarButton;
         
         /// <summary>
         /// EliminarButton control.
