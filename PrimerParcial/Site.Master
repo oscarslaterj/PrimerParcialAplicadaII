@@ -36,11 +36,11 @@
                         <a class="dropdown-item" runat="server" href="~/Registros/rCuentas.aspx">Cuentas</a>
                         <a class="dropdown-item" runat="server" href="~/Registros/rDepositos.aspx"></>Depositos</a>
                     </div>
-                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop1" data-toggle="dropdown">Consultas
+                     <a class="nav-link dropdown-toggle"  href="Consultas/" id="navbardrop1" data-toggle="dropdown">Consultas
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cuentas</a>
-                        <a class="dropdown-item" href="#">Depositos</a>
+                        <a class="dropdown-item" runat="server"  href="Consultas/cCuentas.aspx"></>Cuenta</a>
+                        <a class="dropdown-item"  runat="server" href="~/Consultas/cDepositos.aspx"></>Depositos</a>
                     </div>
                 </li>
             </ul>
