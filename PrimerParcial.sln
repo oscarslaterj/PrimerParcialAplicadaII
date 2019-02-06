@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{68E216CF-FE4C-47EE-A25A-1006A122FF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimerParcialTest", "BLLTests1\PrimerParcialTest.csproj", "{1630504C-CE4D-42E9-A55A-4A2F93095974}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimerParcial.Tests", "BLLTests1\PrimerParcial.Tests.csproj", "{1630504C-CE4D-42E9-A55A-4A2F93095974}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
