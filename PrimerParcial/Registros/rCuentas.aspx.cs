@@ -66,7 +66,7 @@ namespace PrimerParcial.Registros
             Cuenta cuentasbancarias = new Cuenta();
             bool paso = false;
 
-            //todo: validaciones adicionales
+           
             cuentasbancarias = LlenaClase();
 
             if (cuentasbancarias.CuentaID == 0)

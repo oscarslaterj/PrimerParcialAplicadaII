@@ -17,7 +17,7 @@
 
             <%--Boton--%>
             <div class="col-sm-1 col-sm-4 col-xs6">
-                <button type="button" class="btn btn-info">Buscar</button>
+                <asp:Button ID="BuscarButton" runat="server" Text="Buscar" OnClick="BuscarButton_Click" />
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
             <div class="form-group" style="display: inline-block">
                 <asp:Button Text="Nuevo" class="btn btn-outline-info btn-md" runat="server" ID="NuevoButton" OnClick="NuevoButton_Click" />
                 <asp:Button Text="Guardar" class="btn btn-outline-success btn-md" runat="server" ID="GuadarButton" OnClick="GuadarButton_Click" />
-                <asp:Button Text="Eliminar" class="btn btn-outline-danger btn-md" runat="server" ID="EliminarButton"/>
+                <asp:Button Text="Eliminar" class="btn btn-outline-danger btn-md" runat="server" ID="EliminarButton" OnClick="EliminarButton_Click"/>
             </div>
         </div>
     </div>
