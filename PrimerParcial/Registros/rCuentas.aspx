@@ -4,12 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <h2 style="color: #000">Registro de Cuentas</h2>
+    <h2 style="color: #000">Registro de Cuentas</h2>
     <div class="form-row">
         <%--CuentaId--%>
         <div class="form-group col-md-3">
             <asp:Label Text="Cuenta Id" class="text-primary" runat="server" />
             <asp:TextBox ID="CuentaIdTextBox" class="form-control input-group" TextMode="Number" placeholder="0" runat="server" />
+            <asp:RequiredFieldValidator ID="CuentaIDRegularFieldValidator" runat="server" ErrorMessage="No puede estar vacío" ControlToValidate="CuentaIdTextBox" Display="Dynamic" ForeColor="Red" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="CuentaIDRegularExpressionValidator" runat="server" ErrorMessage="Solo Números" ForeColor="Red" ValidationExpression="^[0-9]*$" ControlToValidate="CuentaIdTextBox" ValidationGroup="Guardar">Solo Números</asp:RegularExpressionValidator>
         </div>
         <%--Fecha--%>
         <div class="form-group col-md-3">
@@ -32,7 +34,8 @@
         <div class="form-group col-md-3">
             <asp:Label Text="Nombre" runat="server" />
             <asp:TextBox ID="NombreTextBox" class="form-control input-sm" runat="server" />
-
+            <asp:RequiredFieldValidator ID="NombreRegularFieldValidator" runat="server" ErrorMessage="No puede estar vacío" ControlToValidate="nombreTextBox" Display="Dynamic" ForeColor="Red" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="NombreRegularExpressionValidator" runat="server" ErrorMessage="Solo Letras" ControlToValidate="nombreTextBox" ForeColor="Red" ValidationExpression="^[a-z &amp; A-Z]*$" ValidationGroup="Guardar">Solo Letras</asp:RegularExpressionValidator>
 
         </div>
 
@@ -53,8 +56,8 @@
         <div class="text-center">
             <div class="form-group" style="display: inline-block">
                 <asp:Button Text="Nuevo" class="btn btn-outline-info btn-md" runat="server" ID="NuevoButton" OnClick="NuevoButton_Click" />
-                <asp:Button Text="Guardar" class="btn btn-outline-success btn-md" runat="server" ID="GuardarButton" OnClick="GuadarButton_Click"  />
-                <asp:Button Text="Eliminar" class="btn btn-outline-danger btn-md" runat="server" ID="EliminarButton" OnClick="EliminarButton_Click"/>
+                <asp:Button Text="Guardar" class="btn btn-outline-success btn-md" runat="server" ID="GuardarButton" OnClick="GuadarButton_Click" />
+                <asp:Button Text="Eliminar" class="btn btn-outline-danger btn-md" runat="server" ID="EliminarButton" OnClick="EliminarButton_Click" />
 
             </div>
         </div>
