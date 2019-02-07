@@ -21,7 +21,7 @@ namespace PrimerParcial.Registros
                 RepositorioBase<Cuenta> repositorio = new RepositorioBase<Cuenta>();
 
                 CuentaDropDownList.DataSource = repositorio.GetList(t => true);
-                CuentaDropDownList.DataValueField = "CuentaBancariaId";
+                CuentaDropDownList.DataValueField = "CuentaID";
                 CuentaDropDownList.DataTextField = "Nombre";
                 CuentaDropDownList.DataBind();
 
@@ -34,7 +34,7 @@ namespace PrimerParcial.Registros
         {
             RepositorioBase<Cuenta> repositorio = new RepositorioBase<Cuenta>();
             CuentaDropDownList.DataSource = repositorio.GetList(c => true);
-            CuentaDropDownList.DataValueField = "CuentaBancariaId";
+            CuentaDropDownList.DataValueField = "CuentaID";
             CuentaDropDownList.DataTextField = "Nombre";
             CuentaDropDownList.DataBind();
             CuentaDropDownList.Items.Insert(0, new ListItem("", ""));
