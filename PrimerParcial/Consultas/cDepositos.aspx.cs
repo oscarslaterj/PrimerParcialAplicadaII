@@ -17,46 +17,28 @@ namespace PrimerParcial.Consultas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            DesdeTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            HastaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
 
+        private int ToInt(object valor)
+        {
+            int retorno = 0;
+            int.TryParse(valor.ToString(), out retorno);
+
+            return retorno;
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            RepositorioBase<Deposito> repositorio = new RepositorioBase<Deposito>();
-            int id = 0;
-            switch (FiltroDropDownList.SelectedIndex)
-            {
-                case 0://Todo
-                    filtro = d => true;
-                    break;
-
-                case 1://CuentaId
-                    id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = (d => d.DepositoID == id);
-                    break;
-
-                case 2://Fecha
-                    filtro = (d => d.Fecha.Equals(CriterioTextBox.Text));
-                    break;
-
-                case 3://CuentaId
-                    id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = (d => d.CuentaID == id);
-                    break;
-
-                case 4://Concepto
-                    filtro = (d => d.Concepto.Contains(CriterioTextBox.Text));
-                    break;
-
-                case 5://Monto
-                    decimal monto = Utils.ToDecimal(CriterioTextBox.Text);
-                    filtro = (d => d.Monto == monto);
-                    break;
-
-            }
-
-            DepositoGridView.DataSource = repositorio.GetList(filtro);
+            int id = Utils.ToInt(CriterioTextBox.Text);
+            int index = ToInt(FiltroDropDownList.SelectedIndex);
+            DateTime desde = Utils.ToDateTime(DesdeTextBox.Text);
+            DateTime hasta = Utils.ToDateTime(HastaTextBox.Text);
+            DepositoGridView.DataSource = Metodos.FiltrarDepositos(index, CriterioTextBox.Text, desde, hasta);
             DepositoGridView.DataBind();
+
+            CriterioTextBox.Text = FiltroDropDownList.Text.ToString();
         }
     }
 }

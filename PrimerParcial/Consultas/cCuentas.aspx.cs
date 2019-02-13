@@ -18,38 +18,30 @@ namespace PrimerParcial.Consultas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            DesdeTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            HastaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
 
+        private int ToInt(object valor)
+        {
+            int retorno = 0;
+            int.TryParse(valor.ToString(), out retorno);
+
+            return retorno;
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            RepositorioBase<Cuenta> repositorio = new RepositorioBase<Cuenta>();
-            int id = 0;
-            switch (FiltroDropDownList.SelectedIndex)
-            {
-                case 0://Todo
-                    filtro = c => true;
-                    break;
+            int id = Utils.ToInt(CriterioTextBox.Text);
+            int index = ToInt(FiltroDropDownList.SelectedIndex);
+            DateTime desde = Utils.ToDateTime(DesdeTextBox.Text);
+            DateTime hasta = Utils.ToDateTime(HastaTextBox.Text);
+            CuentaGridView.DataSource = Metodos.FiltrarCuentas(index, CriterioTextBox.Text, desde, hasta);
+            CuentaGridView.DataBind();
 
-                case 1://CuentaId
-                    id = Utils.ToInt(CriterioTextBox.Text);
-                    filtro = (c => c.CuentaID == id);
-                    break;
+            CriterioTextBox.Text = FiltroDropDownList.Text.ToString();
 
-                case 2://Fecha
-                    filtro = (c => c.Fecha.Equals(CriterioTextBox.Text));
-                    break;
-
-                case 3://Nombre
-                    filtro = (c => c.Nombre.Contains(CriterioTextBox.Text));
-                    break;
-
-                case 4://Balance
-                    decimal balance = Utils.ToDecimal(CriterioTextBox.Text);
-                    filtro = (c => c.Balance == balance);
-                    break;
-
-            }
+        }
         }
 }
-}
+
